@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Filme XPTO</h1>
+    <div class="container">
+    <div id="divDetalheFilme" class="row">
+          
+    <script>
+        const params = new URLSearchParams(location.search);
+        let id = params.get('id');
+
+        dadosFilmes = JSON.parse (localStorage.getItem('db_filmes'));
+        let idxFilme = dadosFilmes.results.findIndex ((elem) => elem.id == id)
+        
+        if (idxFilme > -1){
+            let filme = dadosFilmes.results[idxFilme];
+            
+            document.getElementById('divDetalheFilme').innerHTML = `
+                                    <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500${filme.poster_path}" alt="...">
+                            <div class="card-body">
+          <h5 class="card-title">${filme.title}</h5>
+                                <h5 class="card-title">${filme.overview}</h5>
+                                <p class="card-text">${filme.id}</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                </div
+        `
+        }
+       else {
+        alert ('Filme não encontrado')
+       }
+
+
+        "Código do Filme" 
+    </script>
+</body>
+</html>
